@@ -8,6 +8,7 @@ const passport = require("passport");
 //
 const articleRouter = require("./routes/articles");
 const mongoose = require("/routes/articles");
+const Article = require("./models/article");
 
 mongoose.connect("mongodb://localhost/blog");
 
@@ -42,7 +43,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(passport.session());
 //
-app.use(express.urlencoded({ extended: false}))
+app.use(express.urlencoded({ extended: false }));
 app.use("/articles", articleRouter);
 
 app.use("/", indexRouter);
@@ -68,13 +69,7 @@ app.use(function (err, req, res, next) {
 module.exports = app;
 //
 
-app.get("/", (req, res) => {
-  const articles = [
-    {
-      title: "Test Article",
-      createdAt: new Date(),
-      description: "Test description",
-    },
-  ];
+app.get("/", async (req, res) => {
+  const articles = await Article.find().sort({ createdAt: "desc" });
   res.render("articles/index", { artlices: articles });
 });
