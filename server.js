@@ -13,7 +13,7 @@ const postsRouter = require("./routes/posts");
 const usersRouter = require("./routes/users");
 
 require("./config/database");
-require('./config/passport');
+require("./config/passport");
 
 const app = express();
 
@@ -58,3 +58,7 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+app.get("/", (req, res) => {
+  res.render("index");
+});
