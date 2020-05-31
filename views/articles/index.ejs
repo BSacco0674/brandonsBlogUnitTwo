@@ -24,7 +24,9 @@
             <%= article.createdAt.toLocaleDateString() %>
           </div>
           <div class="card-text mb-2"><%= artice.description %></div>
-          <a href="articles/<%= article.id %>" class="btn btn-primary">Read More</a>
+          <a href="articles/<%= article.slug %>" class="btn btn-primary"
+            >Read More</a
+          >
         </div>
         <%= article.title %>
       </div>
