@@ -64,10 +64,12 @@ module.exports = app;
 //
 
 app.get("/", (req, res) => {
-  const articles = [{
-    title: 'Test Article',
-    createdAt: Date.now(),
-    description: "Test description"
-  }]
+  const articles = [
+    {
+      title: "Test Article",
+      createdAt: new Date(),
+      description: "Test description",
+    },
+  ];
   res.render("index", { artlices: articles });
 });
