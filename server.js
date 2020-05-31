@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
+//
+const articleRouter = require("./routes/articles");
 
 require("dotenv").config();
 
@@ -36,7 +38,8 @@ app.use(
 app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(passport.session());
-
+//
+app.use("/articles", articleRouter);
 app.use("/", indexRouter);
 app.use("/posts", postsRouter);
 app.use("/users", usersRouter);
@@ -58,7 +61,13 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+//
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const articles = [{
+    title: 'Test Article',
+    createdAt: Date.now(),
+    description: "Test description"
+  }]
+  res.render("index", { artlices: articles });
 });
