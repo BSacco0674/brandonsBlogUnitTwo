@@ -1,8 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("post go here");
+router.get("/new", (req, res) => {
+  res.render('aricles/new');
 });
+
+router.post('/', (req, res) =>{
+    
+})
+
 
 module.exports = router;

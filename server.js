@@ -71,5 +71,5 @@ app.get("/", (req, res) => {
       description: "Test description",
     },
   ];
-  res.render("index", { artlices: articles });
+  res.render("articles/index", { artlices: articles });
 });
