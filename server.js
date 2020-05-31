@@ -9,6 +9,7 @@ const passport = require("passport");
 const articleRouter = require("./routes/articles");
 const mongoose = require("/routes/articles");
 const Article = require("./models/article");
+const methodOverride = require('method-override')
 
 mongoose.connect("mongodb://localhost/blog");
 
@@ -45,6 +46,7 @@ app.use(passport.session());
 //
 app.use(express.urlencoded({ extended: false }));
 app.use("/articles", articleRouter);
+app.use(methodOverride('_method'));
 
 app.use("/", indexRouter);
 app.use("/posts", postsRouter);
