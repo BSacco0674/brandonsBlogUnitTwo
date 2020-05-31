@@ -7,6 +7,9 @@ const session = require("express-session");
 const passport = require("passport");
 //
 const articleRouter = require("./routes/articles");
+const mongoose = require("/routes/articles");
+
+mongoose.connect("mongodb://localhost/blog");
 
 require("dotenv").config();
 
