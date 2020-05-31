@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const tktksCtrl = require("../controllers/tktks");
+const postsCtrl = require("../controllers/posts");
 
-router.get("/", tktksCtrl.index);
+router.get("/", postsCtrl.index);
 
 module.exports = router;
