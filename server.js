@@ -42,7 +42,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(passport.session());
 //
+app.use(express.urlencoded({ extended: false}))
 app.use("/articles", articleRouter);
+
 app.use("/", indexRouter);
 app.use("/posts", postsRouter);
 app.use("/users", usersRouter);
