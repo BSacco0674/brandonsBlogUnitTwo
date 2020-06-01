@@ -24,12 +24,15 @@
             <%= article.createdAt.toLocaleDateString() %>
           </div>
           <div class="card-text mb-2"><%= artice.description %></div>
-          <a href="articles/<%= article.slug %>" class="btn btn-primary"
+          <a href="articles/edit/<%= article.id %>
+          <a href="articles/<%= article.slug %>"class="btn btn-primary"
             >Read More</a
+            <a href="articles/edit/<%= article.id %>"class="btn btn-info"
+              >Edit</a
           >
           <form
             action="/articles/<%= article.id %>?_method=DELETE"
-            method="POST"
+            method="POST" class="d-inline"></form>
           >
             <button tpye="submit" class="btn btn-danger">Delete</button>
           </form>
