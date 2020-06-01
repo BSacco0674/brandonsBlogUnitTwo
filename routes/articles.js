@@ -7,47 +7,23 @@ const { JSDOM } = require("jsdom");
 const dompurify = createDomPurify(new JSDOM().window);
 const articlesCtrl = require("../controllers/articles");
 
-router.get("/", async (req, res) => {
-  const articles = await Article.find().sort({ createdAt: "desc" });
-  res.render("articles/index", { articles: articles, title: "Brandon's blog" });
-});
-
+router.get("/", isLoggedIn, articlesCtrl.index);
 router.get("/new", isLoggedIn, articlesCtrl.new);
-
-router.get("/new/:id", async (req, res) => {
-  const article = await Article.findById(req.params.id);
-  res.render("articles/edit", { article: article() });
-});
-
-router.get("/:slug", async (req, res) => {
-  const article = await Article.findOne({ slug: req.params.slug });
-  if (article == null) res.redirect("/");
-  res.render("articles/show", { article: article });
-});
-
+router.get("/new/:id", isLoggedIn, articlesCtrl.edit);
+router.get("/:slug", isLoggedIn, articlesCtrl.show);
 router.post(
   "/",
-  async (req, res, next) => {
-    req.article = new Article();
-    next();
-  },
+  isLoggedIn,
+  articlesCtrl.create,
   saveArticleAndRedirect("new")
 );
-
 router.put(
   "/:id",
-  async (req, res, next) => {
-    req.article = await Article.findById(req.params.id);
-    next();
-  },
+  isLoggedIn,
+  articlesCtrl.update,
   saveArticleAndRedirect("edit")
 );
-
-method = "DELETE";
-router.delete("/:id", async (req, res) => {
-  await Article.findByIdAndDelete(req.params.id);
-  res.redirect("/");
-});
+router.delete("/:id", isLoggedIn, articlesCtrl.delete);
 
 function saveArticleAndRedirect(path) {
   return async (req, res) => {
