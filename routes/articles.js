@@ -51,10 +51,8 @@ function saveArticleAndRedirect(path){
       } catch (e) {
         res.render(`articles/${path}`, { article: article });
       }
-    });
+}};
 
-    }
-}
 
 
 module.exports = router;

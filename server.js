@@ -1,23 +1,18 @@
 const createError = require("http-errors");
 const express = require("express");
+const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
 const passport = require("passport");
-//
-const articleRouter = require("./routes/articles");
-const mongoose = require("/routes/articles");
-const Article = require("./models/article");
-const methodOverride = require('method-override')
-
-mongoose.connect("mongodb://localhost/blog");
+const methodOverride = require("method-override");
 
 require("dotenv").config();
 
 const indexRouter = require("./routes/index");
-const postsRouter = require("./routes/posts");
 const usersRouter = require("./routes/users");
+const articleRouter = require("./routes/articles");
 
 require("./config/database");
 require("./config/passport");
@@ -28,10 +23,12 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(methodOverride("_method"));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
     secret: "MySecret",
@@ -40,17 +37,12 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(passport.session());
-//
-app.use(express.urlencoded({ extended: false }));
-app.use("/articles", articleRouter);
-app.use(methodOverride('_method'));
 
 app.use("/", indexRouter);
-app.use("/posts", postsRouter);
 app.use("/users", usersRouter);
+app.use("/articles", articleRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -69,9 +61,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-//
-
-app.get("/", async (req, res) => {
-  const articles = await Article.find().sort({ createdAt: "desc" });
-  res.render("articles/index", { artlices: articles });
-});

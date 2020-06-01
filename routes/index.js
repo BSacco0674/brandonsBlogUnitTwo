@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Post Index" });
+  res.render("index", { title: "Brandon's Blog, its sad and kinda funny" });
 });
 
 router.get(
