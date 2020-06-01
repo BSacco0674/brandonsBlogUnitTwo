@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   res.render("articles/index", { articles: articles, title: "Brandon's blog" });
 });
 
-router.get("/new", isLoggedIn, articlesCtrl.new)
+router.get("/new", isLoggedIn, articlesCtrl.new);
 
 router.get("/new/:id", async (req, res) => {
   const article = await Article.findById(req.params.id);
@@ -66,8 +66,7 @@ function saveArticleAndRedirect(path) {
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
-  res.redirect("/users/login");
+  res.redirect("/users");
 }
-
 
 module.exports = router;
