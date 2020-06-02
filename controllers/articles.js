@@ -16,20 +16,22 @@ async function index(req, res) {
 }
 
 function newArticle(req, res) {
+  console.log("pleaserun");
   res.render("articles/new", {
-    article: new Article(),
     title: "Brandon's Blog",
   });
 }
 
-async function edit(req, res) {
-  const article = await Article.findById(req.params.id);
-  res.render("articles/edit", { article: article(), title: "Brandon's blog" });
+function edit(req, res) {
+  console.log("PLEASEEDIT");
+  Article.findById(req.params.id, function (err, article) {
+    res.render("articles/edit", { article, id: req.params.id });
+  });
 }
 
 async function show(req, res) {
-  const article = await Article.findOne({ slug: req.params.slug });
-  if (article == null) res.redirect("/");
+  const article = await Article.findById(req.params.id);
+  // if (article == null) res.redirect("/");
   res.render("articles/show", { article: article, title: "Brandon's blog" });
 }
 
@@ -55,8 +57,9 @@ function create(req, res) {
 // };
 
 async function update(req, res, next) {
-  req.article = await Article.findById(req.params.id);
-  return next();
+  Article.findByIdAndUpdate(req.params.id, req.body, function (err, articles) {
+    res.redirect("/articles/");
+  });
 }
 
 async function deleteArticle(req, res) {

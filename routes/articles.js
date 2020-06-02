@@ -9,10 +9,11 @@ const articlesCtrl = require("../controllers/articles");
 
 router.get("/", isLoggedIn, articlesCtrl.index);
 router.get("/new", isLoggedIn, articlesCtrl.new);
-router.get("/new/:id", isLoggedIn, articlesCtrl.edit);
-router.get("/:slug", isLoggedIn, articlesCtrl.show);
+router.get("/:id/edit", isLoggedIn, articlesCtrl.edit);
+router.get("/:id", isLoggedIn, articlesCtrl.show);
 router.post("/", isLoggedIn, articlesCtrl.create);
 router.delete("/:id", isLoggedIn, articlesCtrl.delete);
+router.put("/:id", isLoggedIn, articlesCtrl.update);
 
 // function saveArticleAndRedirect(path) {
 //   console.log("thisisrunning");
@@ -34,6 +35,7 @@ router.delete("/:id", isLoggedIn, articlesCtrl.delete);
 // }
 
 function isLoggedIn(req, res, next) {
+  console.log("areyourunning");
   if (req.isAuthenticated()) return next();
   res.redirect("/users");
 }
