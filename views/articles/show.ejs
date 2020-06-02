@@ -21,8 +21,18 @@
       <div>
         <%= article.description%> <%= article.markdown%><%= article.createdAt%>
       </div>
+      <br><br><h2>Comment</h2>
+      <form id="add-review-form" method="POST"
+        action="/articles/<%= article._id %>/comments">
+        <label>Comment:</label>
+        <textarea name="content"></textarea>
+       
+        </select>
+        <input type="submit" value="Add Comment">
+      </form>
+
+      
+      </div>
     </div>
   </body>
 </html>
-
-

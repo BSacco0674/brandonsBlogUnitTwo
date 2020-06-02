@@ -8,6 +8,7 @@ module.exports = {
   create,
   update,
   delete: deleteArticle,
+  createComment,
 };
 
 async function index(req, res) {
@@ -45,16 +46,6 @@ function create(req, res) {
     res.redirect("/articles");
   });
 }
-// req.article = new Article();
-// console.log("thisisrunning")
-//   let article = req.article;
-//   article.title = req.body.title;
-//   article.description = req.body.description;
-//   article.markdown = req.body.markdown;
-//     console.log('thisrunning')
-//     Article.create();
-//     res.redirect(`/articles/${article.slug}`);
-// };
 
 async function update(req, res, next) {
   Article.findByIdAndUpdate(req.params.id, req.body, function (err, articles) {
@@ -65,4 +56,13 @@ async function update(req, res, next) {
 async function deleteArticle(req, res) {
   await Article.findByIdAndDelete(req.params.id);
   res.redirect("/");
+}
+
+function createComment(req, res) {
+  Article.findById(req.params.id, function (err, article) {
+    article.comments.push(req.body);
+    article.save(function (err) {
+      res.redirect(`/articles/${req.params.id}`);
+    });
+  });
 }

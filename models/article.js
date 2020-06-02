@@ -32,7 +32,7 @@ const articleSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  comment: [commentSchema],
+  comments: [commentSchema],
 });
 
 module.exports = mongoose.model("Article", articleSchema);
