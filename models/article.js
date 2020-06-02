@@ -3,6 +3,15 @@ const marked = require("marked");
 const slugify = require("slugify");
 
 const Schema = mongoose.Schema;
+const commentSchema = new Schema(
+  {
+    content: String,
+    rating: { type: Number, min: 1, max: 5, default: 5 },
+  },
+  {
+    timestamps: true,
+  }
+);
 const articleSchema = new mongoose.Schema({
   user: {
     type: Schema.Types.ObjectId,
@@ -23,16 +32,7 @@ const articleSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  // slug: {
-  //     type: String,
-  //     required: true,
-  //     unique: true
-  // },
-  // sanitizedHtml: {
-  //     type: String,
-  //     required: true
-  // }
+  comment: [commentSchema],
 });
-
 
 module.exports = mongoose.model("Article", articleSchema);
