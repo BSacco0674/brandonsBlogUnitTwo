@@ -14,9 +14,14 @@ passport.use(
       User.findOne({ googleId: profile.id }, function (err, user) {
         if (err) return cb(err);
         if (user) {
-          console.log("-----------------------------------------");
-          console.log(profile);
-          return cb(null, user);
+          if (!user.avatar) {
+            user.avatar = profile.photos[0].value;
+            user.save(function (err) {
+              return cb(null, user);
+            });
+          } else {
+            return cb(null, user);
+          }
         } else {
           var newUser = new User({
             name: profile.displayName,

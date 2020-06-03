@@ -9,38 +9,41 @@ module.exports = {
   update,
   delete: deleteArticle,
   createComment,
- 
 };
-
-
-
 
 async function index(req, res) {
   const articles = await Article.find().sort({ createdAt: "desc" });
-  res.render("articles/index", { articles: articles, title: "Brandon's blog" });
+  console.log(req.user);
+  res.render("articles/index", {
+    articles: articles,
+    title: "Brandon's blog",
+    user: req.user,
+  });
 }
 
 function newArticle(req, res) {
   console.log("pleaserun");
   res.render("articles/new", {
     title: "Brandon's Blog",
+    user: req.user,
   });
 }
 
 function edit(req, res) {
   console.log("PLEASEEDIT");
   Article.findById(req.params.id, function (err, article) {
-    res.render("articles/edit", { article, id: req.params.id });
+    res.render("articles/edit", { article, id: req.params.id, user: req.user });
   });
 }
 
 async function show(req, res) {
   const article = await Article.findById(req.params.id);
-  // if (article == null) res.redirect("/");
-  res.render("articles/show", { article: article, title: "Brandon's blog" });
-  };
-
-
+  res.render("articles/show", {
+    article: article,
+    title: "Brandon's blog",
+    user: req.user,
+  });
+}
 
 function create(req, res) {
   console.log("createfunction");
@@ -48,7 +51,6 @@ function create(req, res) {
   const newArticle = new Article(req.body);
   newArticle.save(function (err) {
     if (err) return res.redirect("/articles/new");
-    console.log(newArticle);
     res.redirect("/articles");
   });
 }
@@ -72,4 +74,3 @@ function createComment(req, res) {
     });
   });
 }
-
