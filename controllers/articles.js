@@ -9,7 +9,11 @@ module.exports = {
   update,
   delete: deleteArticle,
   createComment,
+ 
 };
+
+
+
 
 async function index(req, res) {
   const articles = await Article.find().sort({ createdAt: "desc" });
@@ -34,7 +38,9 @@ async function show(req, res) {
   const article = await Article.findById(req.params.id);
   // if (article == null) res.redirect("/");
   res.render("articles/show", { article: article, title: "Brandon's blog" });
-}
+  };
+
+
 
 function create(req, res) {
   console.log("createfunction");
@@ -66,3 +72,4 @@ function createComment(req, res) {
     });
   });
 }
+

@@ -30,7 +30,22 @@
         </select>
         <input type="submit" value="Add Comment">
       </form>
-
+      <% if (article.comments.length) { %>
+        <table>
+         
+          <tbody>
+            <% article.comments.forEach(function(c) { %>
+              <tr>
+                <td><%= c.content %></td>
+                <td><%= c.createdAt.toLocaleDateString() %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h5>No Comments Yet</h5>
+      <% } %>
+      
       
       </div>
     </div>
