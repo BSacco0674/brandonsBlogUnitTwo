@@ -32,7 +32,12 @@ function newArticle(req, res) {
 function edit(req, res) {
   console.log("PLEASEEDIT");
   Article.findById(req.params.id, function (err, article) {
-    res.render("articles/edit", { article, id: req.params.id, user: req.user });
+    res.render("articles/edit", {
+      article,
+      id: req.params.id,
+      title: "Brandon's Blog",
+      user: req.user,
+    });
   });
 }
 
