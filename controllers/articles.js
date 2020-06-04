@@ -1,4 +1,5 @@
 const Article = require("../models/article");
+const Marked = require("marked");
 
 module.exports = {
   index,
@@ -47,6 +48,7 @@ async function show(req, res) {
     article: article,
     title: "Brandon's blog",
     user: req.user,
+    markdown: Marked(article.markdown),
   });
 }
 

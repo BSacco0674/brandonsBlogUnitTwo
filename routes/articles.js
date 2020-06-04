@@ -1,6 +1,4 @@
 const express = require("express");
-const Article = require("./../models/article");
-const marked = require("marked"); //idk if we installed this
 const router = express.Router();
 const articlesCtrl = require("../controllers/articles");
 

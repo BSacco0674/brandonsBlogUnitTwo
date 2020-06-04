@@ -1,46 +1,38 @@
-<%- include('../partials/head') %>
-    <%- include('nav') %>
- 
-    <div class="container">
-      <h1 class="mb-1"><%= article.title %></h1>
-      <div class="text-muted mb-2"></div>
-      <a href="/articles" class="btn btn-secondary">All Articles</a>
+<%- include('../partials/head') %> <%- include('nav') %>
+<div class="container">
+  <h1 class="mb-1"><%= article.title %></h1>
+  <a href="/articles" class="btn btn-secondary">All Articles</a>
+  <a href="/articles/<%= article.id %>/edit" class="btn btn-info">Edit</a>
+  <div>
+    <%= article.description%> <%=markdown%><%= article.createdAt%>
+  </div>
+  <hr class="solid" />
+  <h2>Comment</h2>
+  <% if (article.comments.length) { %>
+  <table>
+    <tbody>
+      <% article.comments.forEach(function(c) { %>
+      <tr>
+        <td><%= c.content %></td>
+        <td><%= c.createdAt.toLocaleDateString() %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% } else { %>
+  <br />
+  <h5>No Comments Yet</h5>
+  <% } %>
+  <hr class="solid" />
+  <form
+    id="add-review-form"
+    method="POST"
+    action="/articles/<%= article._id %>/comments"
+  >
+    <textarea class="commentbox" name="content"></textarea>
 
-      <a href="/articles/<%= article.id %>/edit" class="btn btn-info">Edit</a>
-      <div>
-        <%= article.description%> <%= article.markdown%><%= article.createdAt%>
-      </div>
-      <hr>
-      <br><br><h2>Comment</h2>
-      <% if (article.comments.length) { %>
-        <table>
-          <tbody>
-            <% article.comments.forEach(function(c) { %>
-              <tr>
-                <td><%= c.content %></td>
-                <td><%= c.createdAt.toLocaleDateString() %></td>
-              </tr>
-              <% }); %>
-            </tbody>
-          </table>
-          <% } else { %>
-            <br>
-            <h5>No Comments Yet</h5>
-            <% } %>
-            <br><br><br>
-            <hr class="solid">
-            <form id="add-review-form" method="POST"
-              action="/articles/<%= article._id %>/comments">
-              
-              <textarea class="commentbox" name="content"></textarea>
-             
-              </select>
-              <br>
-              <input type="submit" value="Add Comment">
-            </form>
-            
-            
-      </div>
-    </div>
-  </body>
-</html>
+    <br />
+    <input type="submit" value="Add Comment" />
+  </form>
+</div>
+<%- include('../partials/tail') %>
