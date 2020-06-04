@@ -4,7 +4,7 @@ const passport = require("passport");
 
 router.get("/", function (req, res, next) {
   res.render("index", {
-    title: "testing dark",
+    title: "Stay a while and listen",
     user: req.user,
   });
 });
@@ -24,7 +24,7 @@ router.get(
 
 router.get("/logout", function (req, res) {
   req.logout();
-  res.redirect("/users");
+  res.redirect("/");
 });
 
 module.exports = router;
