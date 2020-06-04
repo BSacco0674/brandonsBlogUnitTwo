@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema(
   {
     content: String,
-    rating: { type: Number, min: 1, max: 5, default: 5 },
+    like: { type: Boolean},
   },
   {
     timestamps: true,
