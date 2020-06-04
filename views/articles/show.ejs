@@ -26,11 +26,12 @@
             <br>
             <h5>No Comments Yet</h5>
             <% } %>
-            <br><br><br><hr style="color: black; height: 1px;">
+            <br><br><br>
+            <hr class="solid">
             <form id="add-review-form" method="POST"
               action="/articles/<%= article._id %>/comments">
               
-              <textarea name="content" style="width: 400px; height: 200px;"></textarea>
+              <textarea class="commentbox" name="content"></textarea>
              
               </select>
               <br>
