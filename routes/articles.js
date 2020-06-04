@@ -13,11 +13,9 @@ router.post("/:id/comments", isLoggedIn, articlesCtrl.createComment);
 router.delete("/:id", isLoggedIn, articlesCtrl.delete);
 router.put("/:id", isLoggedIn, articlesCtrl.update);
 
-
 function isLoggedIn(req, res, next) {
-  console.log("areyourunning");
   if (req.isAuthenticated()) return next();
-  res.redirect("/users");
+  res.redirect("/auth/google");
 }
 
 module.exports = router;
