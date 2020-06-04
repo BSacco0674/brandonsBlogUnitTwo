@@ -1,5 +1,6 @@
 <%- include('../partials/head') %>
     <%- include('nav') %>
+ 
     <div class="container">
       <h1 class="mb-1"><%= article.title %></h1>
       <div class="text-muted mb-2"></div>
@@ -8,32 +9,35 @@
       <div>
         <%= article.description%> <%= article.markdown%><%= article.createdAt%>
       </div>
+      <hr>
       <br><br><h2>Comment</h2>
-      <form id="add-review-form" method="POST"
-        action="/articles/<%= article._id %>/comments">
-        <label>Comment:</label>
-        <textarea name="content"></textarea>
-       
-        </select>
-        <input type="submit" value="Add Comment">
-      </form>
       <% if (article.comments.length) { %>
         <table>
-         
           <tbody>
             <% article.comments.forEach(function(c) { %>
               <tr>
                 <td><%= c.content %></td>
                 <td><%= c.createdAt.toLocaleDateString() %></td>
               </tr>
-            <% }); %>
-          </tbody>
-        </table>
-      <% } else { %>
-        <h5>No Comments Yet</h5>
-      <% } %>
-      
-      
+              <% }); %>
+            </tbody>
+          </table>
+          <% } else { %>
+            <br>
+            <h5>No Comments Yet</h5>
+            <% } %>
+            <br><br><br><hr style="color: black; height: 1px;">
+            <form id="add-review-form" method="POST"
+              action="/articles/<%= article._id %>/comments">
+              
+              <textarea name="content" style="width: 400px; height: 200px;"></textarea>
+             
+              </select>
+              <br>
+              <input type="submit" value="Add Comment">
+            </form>
+            
+            
       </div>
     </div>
   </body>

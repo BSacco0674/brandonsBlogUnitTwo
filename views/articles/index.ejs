@@ -1,24 +1,25 @@
 <%- include('../partials/head') %>
     <%- include('nav') %>
+    <script>
+      var options = {
+        top: "50px", // default: '32px'
+        right: "32px", // default: '32px'
+        left: "unset", // default: 'unset'
+        time: "0.5s", // default: '0.3s'
+        mixColor: "#fff", // default: '#fff'
+        backgroundColor: "#fff", // default: '#fff'
+        buttonColorDark: "#100f2c", // default: '#100f2c'
+        buttonColorLight: "#fff", // default: '#fff'
+        saveInCookies: true, // default: true,
+        label: "🌓", // default: ''
+        autoMatchOsTheme: true, // default: true
+      };
+      const darkmode = new Darkmode(options);
+      darkmode.showWidget();
+    </script>
     <div class="container">
       <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.5/lib/darkmode-js.min.js"></script>
-      <script>
-        var options = {
-          top: "5px", // default: '32px'
-          right: "32px", // default: '32px'
-          left: "unset", // default: 'unset'
-          time: "0.5s", // default: '0.3s'
-          mixColor: "#fff", // default: '#fff'
-          backgroundColor: "#fff", // default: '#fff'
-          buttonColorDark: "#100f2c", // default: '#100f2c'
-          buttonColorLight: "#fff", // default: '#fff'
-          saveInCookies: true, // default: true,
-          label: "🌓", // default: ''
-          autoMatchOsTheme: true, // default: true
-        };
-        const darkmode = new Darkmode(options);
-        darkmode.showWidget();
-      </script>
+      
       <h1 class="mb-4">Brandons Blog</h1>
       <a href="/articles/new" class="btn btn-success">New Article</a>
 
@@ -30,11 +31,12 @@
             <%= article.createdAt.toLocaleDateString() %>
           </div>
           <div class="card-text mb-2"><%= article.description %></div>
-          <a href="/articles/<%= article._id %>" class="btn btn-primary"
+          <div class="row"> 
+          <a href="/articles/<%= article._id %>" class="btn btn-primary col-md-16"
             >Read More</a
           >
           <form action="/articles/<%=article._id  %>/edit" method="GET">
-            <button type="submit" class="btn btn-warning">Edit</button>
+            <button type="submit" class="btn btn-warning col-md-16" style="margin-left: 3px; margin-right: 3px;">Edit</button>
           </form>
 
           <form
@@ -42,8 +44,9 @@
             method="POST"
             class="d-inline"
           >
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger col-md-16">Delete</button>
           </form>
+        </div>
         </div>
         <%= article.title %>
       </div>
