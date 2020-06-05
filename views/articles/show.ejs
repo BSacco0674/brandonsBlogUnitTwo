@@ -14,6 +14,11 @@
       <% article.comments.forEach(function(c) { %>
       <tr>
         <td><%= c.content %></td>
+        <% if (c.like) { %>
+        <td>😃</td>
+        <% } else { %>
+        <td></td>
+        <% } %>
         <td><%= c.createdAt.toLocaleDateString() %></td>
       </tr>
       <% }); %>
@@ -33,7 +38,10 @@
 
     <br />
     <input type="submit" value="Add Comment" />
-    <i onclick="like" class="fas fa-smile-beam"></i>
+    <label
+      ><input type="checkbox" name="like" value="1" />SMASH THAT LIKE
+      BUTTON!!!</label
+    >
   </form>
 </div>
 

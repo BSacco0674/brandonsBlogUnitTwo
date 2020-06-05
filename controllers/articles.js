@@ -75,6 +75,7 @@ function createComment(req, res) {
     article.comments.push(req.body);
     article.save(function (err) {
       res.redirect(`/articles/${req.params.id}`);
+      console.log(req);
     });
   });
 }
