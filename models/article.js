@@ -6,13 +6,14 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema(
   {
     content: String,
-    like: { type: Boolean},
+    like: Boolean,
   },
   {
     timestamps: true,
   }
 );
-const articleSchema = new mongoose.Schema({
+
+const articleSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
