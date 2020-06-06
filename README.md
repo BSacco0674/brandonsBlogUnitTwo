@@ -25,14 +25,14 @@
 
 ### ***Screenshots***
 
-###### Main Page
-![Main Page](public/landingpage.png)
+###### Landing Page
+![Main Page](https://i.imgur.com/8abV1TT.png)
 
 ###### Main Page
-![Tellyourstory](public/mainpage.png)
+![Tellyourstory](https://i.imgur.com/tvKvqIc.png)
 
 ###### Comment Section
-![Comment Details](public/comment.png)
+![Comment Details](https://i.imgur.com/NJ1l6bg.png)
 ***
 
 ### ***Future Updates***
