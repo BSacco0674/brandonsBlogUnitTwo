@@ -29,10 +29,10 @@
 ![Main Page](public/landingpage.png)
 
 ###### Main Page
-![Shelf](public/mainpage.png)
+![Tellyourstory](public/mainpage.png)
 
 ###### Comment Section
-![Book Details](public/comment.png)
+![Comment Details](public/comment.png)
 ***
 
 ### ***Future Updates***
