@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>!!ERROR!!</title>
   </head>
   <body>
-    <h1>HELLO DAVID</h1>
-    <h1><%= message %></h1>
-    <h2><%= error.status %></h2>
-    <pre><%= error.stack %></pre>
+    <div class="landingContainer">
+      <img src="/404.jpg" alt="oldman" class="oldman" />
+      <h1 class="errortext"><%= message %></h1>
+      <h2 class="errortext"><%= error.status %></h2>
+      <pre class="errortext"><%= error.stack %></pre>
+    </div>
   </body>
 </html>
