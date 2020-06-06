@@ -20,7 +20,7 @@
 ### ***Development and deployment***
 
 ##### Trello was used to keep track of development progress along with wireframes, ERD, Userstories, and orginial conspects and can be viewed [here](https://trello.com/b/Vu8fogDq/brandons-blog).
-##### The project was deployed via Heroku and can be viewed [here](https://stark-caverns-74545.herokuapp.com/).
+##### The project was deployed via Heroku and can be viewed [here](https://stay-a-while.herokuapp.com/).
 ***
 
 ### ***Screenshots***
@@ -56,3 +56,6 @@ Thanks again to everyone's hard work and contributions, for without this project
 ](https://www.linkedin.com/in/samueltrahan/), [David Stinson
 ](https://www.linkedin.com/in/david-stinson/),[Linnae Kraemer
 ](https://www.linkedin.com/in/linnae-kraemer/)
+
+
+PS For fun/bored, try to force a 404 Error!! Enjoy ^_^
