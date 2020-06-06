@@ -67,7 +67,7 @@ async function update(req, res, next) {
 
 async function deleteArticle(req, res) {
   await Article.findByIdAndDelete(req.params.id);
-  res.redirect("/");
+  res.redirect("/articles");
 }
 
 function createComment(req, res) {

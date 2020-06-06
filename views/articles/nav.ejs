@@ -3,7 +3,7 @@
     <img src=<%=user.avatar%> class= "profilePic">
   Hello <%= user.name %>
 <%}else{%>
-  Hello please log in
+  Greetings Travelers
 <%} %>
   
   </a>
@@ -29,13 +29,16 @@
       <li class="nav-item">
         <a class="nav-link" href="/articles">Articles</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/google">Login</a>
-      </li>
+      <% if (user) {%>
       <li class="nav-item">
         <a class="nav-link" href="/logout"" tabindex="-1" aria-disabled="true"
-          >Logout</a
+        >Logout</a
         >
+        </li>
+        <%} else {%>
+        <li class="nav-item"></li> 
+        <a class="nav-link" href="/auth/google">Login</a>
+      <%} %>
       </li>
     </ul>
   </div>
