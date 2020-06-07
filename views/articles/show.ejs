@@ -20,14 +20,14 @@
     <tbody>
       <% article.comments.forEach(function(c) { %>
       <tr>
-        <td><%= c.content %></td>
+        <td class="table-cell"><%= c.content %></td>
         <% if (c.like) { %>
-        <td>😃</td>
+        <td class="table-cell">😃</td>
         <% } else { %>
         <td></td>
         <% } %>
-        <td><%= c.user%></td>
-        <td><%= c.createdAt.toLocaleDateString() %></td>
+        <td class="table-cell"><%= c.user%></td>
+        <td class="table-cell"><%= c.createdAt.toLocaleDateString() %></td>
       </tr>
       <% }); %>
     </tbody>
@@ -45,7 +45,7 @@
     <textarea class="commentbox" name="content"></textarea>
 
     <br />
-    <input type="submit" value="Add Comment" />
+    <input type="submit" value="Add Comment" class="btn btn-primary" />
     <label
       ><input type="checkbox" name="like" value="1" />SMASH THAT LIKE
       BUTTON!!!</label

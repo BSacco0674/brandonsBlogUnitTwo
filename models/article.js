@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const marked = require("marked");
-const slugify = require("slugify");
+
 
 const Schema = mongoose.Schema;
 const commentSchema = new Schema(
