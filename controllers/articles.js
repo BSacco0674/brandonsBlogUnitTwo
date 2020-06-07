@@ -13,7 +13,6 @@ module.exports = {
 
 async function index(req, res) {
   const articles = await Article.find().sort({ createdAt: "desc" });
-
   res.render("articles/index", {
     articles: articles,
     title: "Tell your Story",

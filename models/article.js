@@ -32,7 +32,6 @@ const articleSchema = new Schema({
     required: true,
   },
   author: String,
-
   createdAt: {
     type: Date,
     default: Date.now,

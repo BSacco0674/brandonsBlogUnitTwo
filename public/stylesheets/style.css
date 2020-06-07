@@ -16,9 +16,6 @@
     width: 100%;
 }
 
-
-
-
 .fire {
 
     display: block;
@@ -28,10 +25,7 @@
 
 .title {
     text-align: center;
-
 }
-
-
 
 /* Container holding the image and the text */
 .landingContainer {
@@ -64,12 +58,9 @@
 
 .navbar-custom {
     height: 66px;
-
 }
 
 .custom-container {
-
-    /* height: clamp(calc(100vh - 132px), auto, auto); */
     min-height: calc(100vh - 132px);
     max-height: auto;
 }
