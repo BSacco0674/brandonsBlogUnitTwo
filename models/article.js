@@ -7,7 +7,9 @@ const commentSchema = new Schema(
   {
     content: String,
     like: Boolean,
+    user: String,
   },
+
   {
     timestamps: true,
   }
@@ -29,6 +31,8 @@ const articleSchema = new Schema({
     type: String,
     required: true,
   },
+  author: String,
+
   createdAt: {
     type: Date,
     default: Date.now,

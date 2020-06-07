@@ -1,5 +1,4 @@
 const Article = require("../models/article");
-const Marked = require("marked");
 
 module.exports = {
   index,
@@ -50,6 +49,7 @@ async function show(req, res) {
 }
 
 function create(req, res) {
+  req.body.author = req.user.name;
   req.body.user = req.user._id;
   const newArticle = new Article(req.body);
   newArticle.save(function (err) {
@@ -70,11 +70,11 @@ async function deleteArticle(req, res) {
 }
 
 function createComment(req, res) {
+  req.body.user = req.user.name;
   Article.findById(req.params.id, function (err, article) {
     article.comments.push(req.body);
     article.save(function (err) {
       res.redirect(`/articles/${req.params.id}`);
-      console.log(req);
     });
   });
 }

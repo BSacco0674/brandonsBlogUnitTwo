@@ -1,9 +1,9 @@
 <%- include('../partials/head') %> <%- include('../partials/nav') %>
 <div class="container custom-container">
   <h1 class="mb-1"><%= article.title %></h1>
-
+  <p>Written by: <%= article.author%></p>
+  <hr class="solid" />
   <div>
-    <br />
     <%= article.description%>
     <br /><br /><%=article.markdown%> <br /><br />
     <%= article.createdAt%>
@@ -14,7 +14,7 @@
   <a href="/articles/<%= article.id %>/edit" class="btn btn-info">Edit</a>
   <%} %>
   <hr class="solid" />
-  <h2>Comment</h2>
+  <h2>Comments</h2>
   <% if (article.comments.length) { %>
   <table>
     <tbody>
@@ -26,6 +26,7 @@
         <% } else { %>
         <td></td>
         <% } %>
+        <td><%= c.user%></td>
         <td><%= c.createdAt.toLocaleDateString() %></td>
       </tr>
       <% }); %>
