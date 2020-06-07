@@ -1,38 +1,43 @@
-<%- include('../partials/head') %>
-    <%- include('nav') %>
-    <div class="container">
-      <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.5/lib/darkmode-js.min.js"></script>
-      
-      <h1 class="mb-4">Tell Your Story</h1>
-      <a href="/articles/new" class="btn btn-success">New Article</a>
+<%- include('../partials/head') %> <%- include('../partials/nav') %>
+<div class="container custom-container">
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.5/lib/darkmode-js.min.js"></script>
 
-      <% articles.forEach(article => { %>
-      <div class="card mt-4">
-        <div class="card-body">
-          <h4 class="card-title"><%= article.title %></h4>
-          <div class="card-subtitle text-muted mb-2">
-            <%= article.createdAt.toLocaleDateString() %>
-          </div>
-          <div class="card-text mb-2"><%= article.description %></div>
-          <div class="row"> 
-          <a href="/articles/<%= article._id %>" class="btn btn-primary col-md-16"
-            >Read More</a
-          >
-          <form action="/articles/<%=article._id  %>/edit" method="GET">
-            <button type="submit" class="btn btn-warning col-md-16" style="margin-left: 3px; margin-right: 3px;">Edit</button>
-          </form>
+  <h1 class="mb-4">Tell Your Story</h1>
+  <a href="/articles/new" class="btn btn-success">New Article</a>
 
-          <form
-            action="/articles/<%= article._id %>?_method=DELETE"
-            method="POST"
-            class="d-inline"
-          >
-            <button type="submit" class="btn btn-danger col-md-16">Delete</button>
-          </form>
-        </div>
-        </div>
+  <% articles.forEach(article => { %>
+  <div class="card mt-4">
+    <div class="card-body">
+      <h4 class="card-title"><%= article.title %></h4>
+      <div class="card-subtitle text-muted mb-2">
+        <%= article.createdAt.toLocaleDateString() %>
       </div>
-      <% }) %>
+      <div class="card-text mb-2"><%= article.description %></div>
+      <div class="row">
+        <a href="/articles/<%= article._id %>" class="btn btn-primary col-md-16"
+          >Read More</a
+        >
+        <form action="/articles/<%=article._id  %>/edit" method="GET">
+          <button
+            type="submit"
+            class="btn btn-warning col-md-16"
+            style="margin-left: 3px; margin-right: 3px;"
+          >
+            Edit
+          </button>
+        </form>
+
+        <form
+          action="/articles/<%= article._id %>?_method=DELETE"
+          method="POST"
+          class="d-inline"
+        >
+          <button type="submit" class="btn btn-danger col-md-16">Delete</button>
+        </form>
+      </div>
     </div>
-  </body>
-</html>
+  </div>
+  <% }) %>
+</div>
+
+<%- include('../partials/tail') %>

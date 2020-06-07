@@ -1,12 +1,12 @@
-<nav class="navbar navbar-dark bg-secondary navbar-expand-lg">
-  <a class="navbar-brand" href="profile."><% if (user) {%>
+<nav class="navbar navbar-dark bg-secondary navbar-expand-lg navbar-custom">
+  <div class="navbar-brand"><% if (user) {%>
     <img src=<%=user.avatar%> class= "profilePic">
   Hello <%= user.name %>
 <%}else{%>
   Greetings Travelers
 <%} %>
-  
-  </a>
+    
+</div>
     
   <button
     class="navbar-toggler"

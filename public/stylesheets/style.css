@@ -8,7 +8,7 @@
     border-width: 1px;
     border-color: black;
     width: 100%;
-    margin: 30px 0;
+    margin: 2px 0 30px;
 }
 
 .commentbox {
@@ -41,7 +41,7 @@
     text-align: center;
     background-color: black;
     align-items: center;
-    height: calc(100vh - 66px);
+    height: calc(100vh - 132px);
     flex-direction: column;
 }
 
@@ -60,4 +60,16 @@
 
 .errortext {
     color: white;
+}
+
+.navbar-custom {
+    height: 66px;
+
+}
+
+.custom-container {
+
+    /* height: clamp(calc(100vh - 132px), auto, auto); */
+    min-height: calc(100vh - 132px);
+    max-height: auto;
 }

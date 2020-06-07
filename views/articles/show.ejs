@@ -1,10 +1,13 @@
-<%- include('../partials/head') %> <%- include('nav') %>
-<div class="container">
+<%- include('../partials/head') %> <%- include('../partials/nav') %>
+<div class="container custom-container">
   <h1 class="mb-1"><%= article.title %></h1>
   <a href="/articles" class="btn btn-secondary">All Articles</a>
   <a href="/articles/<%= article.id %>/edit" class="btn btn-info">Edit</a>
   <div>
-    <%= article.description%> <%=markdown%><%= article.createdAt%>
+    <br />
+    <%= article.description%> <%=article.markdown%>
+    <br /><br />
+    <%= article.createdAt%>
   </div>
   <hr class="solid" />
   <h2>Comment</h2>

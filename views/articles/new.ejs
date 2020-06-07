@@ -1,6 +1,6 @@
 <%- include('../partials/head') %>
-    <%- include('nav') %>
-  <div class="container">
+<%- include('../partials/nav') %>
+  <div class="container custom-container">
       <h1 class="mb-4">NEW ARTICLE</h1>
 
       <form action="/articles" method="POST">
@@ -37,5 +37,4 @@
         <button type="submit" class="btn btn-primary">Save Post</button>
       </form>
     </div>
-  </body>
-</html>
+    <%- include('../partials/tail') %>

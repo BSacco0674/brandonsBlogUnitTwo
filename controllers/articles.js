@@ -46,7 +46,6 @@ async function show(req, res) {
     article: article,
     title: "Tell your Story",
     user: req.user,
-    markdown: Marked(article.markdown),
   });
 }
 
