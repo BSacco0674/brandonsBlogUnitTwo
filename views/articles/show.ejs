@@ -1,14 +1,18 @@
 <%- include('../partials/head') %> <%- include('../partials/nav') %>
 <div class="container custom-container">
   <h1 class="mb-1"><%= article.title %></h1>
-  <a href="/articles" class="btn btn-secondary">All Articles</a>
-  <a href="/articles/<%= article.id %>/edit" class="btn btn-info">Edit</a>
+
   <div>
     <br />
-    <%= article.description%> <%=article.markdown%>
-    <br /><br />
+    <%= article.description%>
+    <br /><br /><%=article.markdown%> <br /><br />
     <%= article.createdAt%>
   </div>
+
+  <% if(user.id == article.user) {%>
+
+  <a href="/articles/<%= article.id %>/edit" class="btn btn-info">Edit</a>
+  <%} %>
   <hr class="solid" />
   <h2>Comment</h2>
   <% if (article.comments.length) { %>

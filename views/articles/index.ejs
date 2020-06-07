@@ -17,6 +17,8 @@
         <a href="/articles/<%= article._id %>" class="btn btn-primary col-md-16"
           >Read More</a
         >
+
+        <% if(user.id == article.user) {%>
         <form action="/articles/<%=article._id  %>/edit" method="GET">
           <button
             type="submit"
@@ -34,6 +36,7 @@
         >
           <button type="submit" class="btn btn-danger col-md-16">Delete</button>
         </form>
+        <%} %>
       </div>
     </div>
   </div>
